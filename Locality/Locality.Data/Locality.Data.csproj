@@ -74,11 +74,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Events\EventPrefences.cs" />
+    <Compile Include="Entities\Events\Events.cs" />
+    <Compile Include="Entities\Preferences\Preferences.cs" />
+    <Compile Include="Entities\Tickets\Tickets.cs" />
     <Compile Include="Entities\Users\User.cs" />
+    <Compile Include="Entities\Users\UserPreferences.cs" />
     <Compile Include="LocalityContext.cs" />
     <Compile Include="Migrations\201511141646507_InitialUsers.cs" />
     <Compile Include="Migrations\201511141646507_InitialUsers.Designer.cs">
       <DependentUpon>201511141646507_InitialUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511141938107_AddedRestOfTheEntities.cs" />
+    <Compile Include="Migrations\201511141938107_AddedRestOfTheEntities.Designer.cs">
+      <DependentUpon>201511141938107_AddedRestOfTheEntities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511141646507_InitialUsers.resx">
       <DependentUpon>201511141646507_InitialUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511141938107_AddedRestOfTheEntities.resx">
+      <DependentUpon>201511141938107_AddedRestOfTheEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

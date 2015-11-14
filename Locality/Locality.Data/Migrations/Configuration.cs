@@ -1,3 +1,5 @@
+using Locality.Data.Entities.Preferences;
+
 namespace Locality.Data.Migrations
 {
     using System;
@@ -14,6 +16,13 @@ namespace Locality.Data.Migrations
 
         protected override void Seed(Locality.Data.LocalityContext context)
         {
+            context.Preferences.AddOrUpdate(
+                pref => pref.Id,
+                new Preferences { Description = "Comedy"},
+                new Preferences {Description = "Dance"},
+                new Preferences {Description = "Pop"},
+                new Preferences {Description = "Rock"});
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
