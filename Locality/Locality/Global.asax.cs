@@ -9,6 +9,8 @@ using System.Web.Routing;
 using Locality.Data;
 using Locality.Data.Repositories;
 using Locality.Domain.Events;
+using Locality.Domain.Payments;
+using Locality.Domain.Tickets;
 using Locality.Domain.Users;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
@@ -35,6 +37,8 @@ namespace Locality
             container.Register(typeof(IRepository<>), typeof(Repository<>) );
             container.Register<IUserService, UserService>();
             container.Register<IEventService, EventService>();
+            container.Register<ITicketService, TicketService>();
+            container.Register<IPaymentService, PaymentService>();
 
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 

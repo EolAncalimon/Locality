@@ -19,39 +19,40 @@ namespace Locality.Domain.Payments
 
             var api = new PaymentsApi();
 
-            var payment = new Payment
-            {
-                Amount = (long) buyEvent.Price,
-                Currency = "GBP",
-                Description = $"Ticket for {buyEvent.Name}",
-                Token = new CardToken(token).Id
-            };
 
             var customer = new Customer
             {
                 Token = token,
                 Name = userBuying.Name,
-                Reference = "Locality Customer"
+                Reference = "Locality Customer",
+                Email = "test@email.com"
             };
 
             try
             {
-                payment = (Payment) api.Create(payment);
+
                 customer = (Customer) api.Create(customer);
 
-                if (payment.Authorization.Id != null)
+                var payment = new Payment
                 {
+                    Amount = (long)buyEvent.Price * 100,
+                    Currency = "GBP",
+                    Description = $"Ticket for {buyEvent.Name}",
+                    Customer = customer
+                };
+
+
+                payment = (Payment)api.Create(payment);
+
                     userBuying.CustomerId = customer.Id;
                     return Task.FromResult(new Localisty.Data.Entities.Tickets.Tickets
                     {
+                        Id = Guid.NewGuid(),
                         Barcode = payment.Reference,
-                        Event = buyEvent,
-                        User = userBuying,
+                        EventId = buyEvent.Id,
+                        UserId = userBuying.Id,
                         Used = false
                     });
-                }
-
-                return null;
 
             }
             catch
@@ -80,7 +81,7 @@ namespace Locality.Domain.Payments
                     Amount = (long)buyEvent.Price,
                     Currency = "GBP",
                     Description = $"Ticket for {buyEvent.Name}",
-                    Token = new CardToken(customer.Token).Id
+                    Customer = customer
                 };
 
                 payment = (Payment)api.Create(payment);
