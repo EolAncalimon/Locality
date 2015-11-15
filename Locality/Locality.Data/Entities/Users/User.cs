@@ -14,7 +14,7 @@ namespace Locality.Data.Entities.Users
         public string FacebookId { get; set; }
         public string FacebookToken { get; set; }
         public string Name { get; set; }
-        public string CardToken { get; set; }
+        public string CustomerId { get; set; }
         public int LastFourDigits { get; set; }
 
         public virtual ICollection<UserPreferences> Preferences { get; set; } 

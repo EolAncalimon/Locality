@@ -24,7 +24,7 @@ namespace Locality.Controllers
             var fb = new FacebookClient(authToken);
             fb.AppSecret = Environment.GetEnvironmentVariable("FacebookSecret");
             dynamic result = await fb.GetTaskAsync("me");
-            var existingUser = (User)await _userService.GetUser(result.Id);
+            var existingUser = (User)await _userService.GetUser(result.id);
             if (existingUser == null)
             {
                 var newUser = await _userService.CreateUser(new User
