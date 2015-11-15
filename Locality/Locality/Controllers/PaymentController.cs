@@ -38,11 +38,26 @@ namespace Locality.Controllers
 
             var ticket = await _paymentService.BuyTicketWithToken(paymentToken, ev, user);
 
-            user.CustomerId = ticket.User.CustomerId;
+            user.CustomerId = ticket.CustomerId;
 
             await _userService.UpdateUser(user);
 
             _ticketService.AddTicket(ticket);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+        }
+
+        public async Task<HttpResponseMessage> PaymentWithCustomerId(string authToken, Guid eventId)
+        {
+            var user = await _userService.GetUserWithToken(authToken);
+            var ev = await _eventService.GetEvent(eventId);
+
+            if (user == null) return Request.CreateResponse(HttpStatusCode.Forbidden);
+
+            var ticket = await _paymentService.BuyTicketWithCustomer(ev, user);
+
+            await _ticketService.AddTicket(ticket);
 
             return Request.CreateResponse(HttpStatusCode.OK);
 

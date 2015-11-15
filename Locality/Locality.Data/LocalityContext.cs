@@ -4,9 +4,9 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Localisty.Data.Entities.Tickets;
 using Locality.Data.Entities.Events;
 using Locality.Data.Entities.Preferences;
+using Locality.Data.Entities.Tickets;
 using Locality.Data.Entities.Users;
 
 namespace Locality.Data

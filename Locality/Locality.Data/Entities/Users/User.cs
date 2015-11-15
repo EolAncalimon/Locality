@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Localisty.Data.Entities.Tickets;
 
 namespace Locality.Data.Entities.Users
 {
@@ -19,7 +18,7 @@ namespace Locality.Data.Entities.Users
 
         public virtual ICollection<UserPreferences> Preferences { get; set; } 
 
-        public virtual ICollection<Tickets> Tickets { get; set; } 
+        public virtual ICollection<Tickets.Tickets> Tickets { get; set; } 
 
         public DateTime UpdatedAt { get; set; }
     }

@@ -39,7 +39,9 @@ namespace Locality.Domain.Users
         {
             _repository.Update(entity);
 
-            return await _repository.Get(u => u.FacebookId == entity.FacebookId);
+            await _repository.SaveChangesAsync();
+
+            return await _repository.Get(u => u.FacebookToken == entity.FacebookToken);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Localisty.Data.Entities.Tickets;
 
 namespace Locality.Data.Entities.Events
 {
@@ -20,7 +19,9 @@ namespace Locality.Data.Entities.Events
         public string EventImageUrl { get; set; }
         public virtual ICollection<EventPreferences> EventPreferences { get; set; } 
 
-        public virtual ICollection<Tickets> Tickets { get; set; } 
+        public virtual ICollection<Tickets.Tickets> Tickets { get; set; } 
+
+        public bool HasTicket { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }
 }
