@@ -74,7 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Events\EventPrefences.cs" />
+    <Compile Include="Entities\Events\EventPreferences.cs" />
     <Compile Include="Entities\Events\Events.cs" />
     <Compile Include="Entities\Preferences\Preferences.cs" />
     <Compile Include="Entities\Tickets\Tickets.cs" />
@@ -101,6 +101,14 @@
     <Compile Include="Migrations\201511150551140_AddedSimplify.Designer.cs">
       <DependentUpon>201511150551140_AddedSimplify.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511150643294_NullableDateTimesOnEvents.cs" />
+    <Compile Include="Migrations\201511150643294_NullableDateTimesOnEvents.Designer.cs">
+      <DependentUpon>201511150643294_NullableDateTimesOnEvents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511150644595_RenamedPreferences.cs" />
+    <Compile Include="Migrations\201511150644595_RenamedPreferences.Designer.cs">
+      <DependentUpon>201511150644595_RenamedPreferences.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -125,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511150551140_AddedSimplify.resx">
       <DependentUpon>201511150551140_AddedSimplify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150643294_NullableDateTimesOnEvents.resx">
+      <DependentUpon>201511150643294_NullableDateTimesOnEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150644595_RenamedPreferences.resx">
+      <DependentUpon>201511150644595_RenamedPreferences.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

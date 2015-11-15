@@ -8,7 +8,7 @@ namespace Locality.Data.Entities.Events
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public DateTime Start { get; set; }
+        public DateTime? Start { get; set; }
         public decimal Price { get; set; }
         public string AddressLineOne { get; set; }
         public string City { get; set; }
@@ -18,9 +18,9 @@ namespace Locality.Data.Entities.Events
         public int TicketsRemaining { get; set; }
 
         public string EventImageUrl { get; set; }
-        public virtual ICollection<EventPrefences> Prefences { get; set; } 
+        public virtual ICollection<EventPreferences> EventPreferences { get; set; } 
 
         public virtual ICollection<Tickets> Tickets { get; set; } 
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

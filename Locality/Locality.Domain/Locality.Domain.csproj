@@ -30,10 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SimplifySDK">
       <HintPath>..\Locality\lib\SimplifySDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,9 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\EventService.cs" />
+    <Compile Include="Events\IEventService.cs" />
+    <Compile Include="Tickets\ITicketService.cs" />
     <Compile Include="Payments\IPaymentService.cs" />
     <Compile Include="Payments\PaymentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tickets\TicketService.cs" />
     <Compile Include="Users\IUserService.cs" />
     <Compile Include="Users\UserService.cs" />
   </ItemGroup>
@@ -54,6 +67,10 @@
       <Project>{702f59bb-c683-4c7f-ab09-f891160457c8}</Project>
       <Name>Locality.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

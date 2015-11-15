@@ -1,3 +1,4 @@
+using Locality.Data.Entities.Events;
 using Locality.Data.Entities.Preferences;
 
 namespace Locality.Data.Migrations
@@ -22,6 +23,14 @@ namespace Locality.Data.Migrations
                 new Preferences {Description = "Dance"},
                 new Preferences {Description = "Pop"},
                 new Preferences {Description = "Rock"});
+
+            context.Events.AddOrUpdate(
+                ev => ev.Id,
+                new Events
+                {
+                    Id = Guid.NewGuid(), TicketsRemaining = 50, Name="Fallover Boy", AddressLineOne="The Boderline", City = "London", Postcode = "W1D 4JB",
+                    EventImageUrl = "http://cdn.londonandpartners.com/asset/7d1923b0dbeaf5f967802b708e35d1f9.jpg", Price = new decimal(20.00), Start = DateTime.Now.AddHours(12.0)
+                });
 
             //  This method will be called after migrating to the latest version.
 

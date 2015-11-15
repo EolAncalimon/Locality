@@ -12,7 +12,7 @@ namespace Locality.Domain.Payments
 {
     public class PaymentService : IPaymentService
     {
-        public Task<Tickets> BuyTicketWithToken(string token, Events buyEvent, User userBuying)
+        public Task<Localisty.Data.Entities.Tickets.Tickets> BuyTicketWithToken(string token, Data.Entities.Events.Events buyEvent, User userBuying)
         {
             PaymentsApi.PublicApiKey = "sbpb_MzlkM2M1MjItZDkwZi00NTY5LWI1YzAtOGFiM2Y5YWJlMzQx";
             PaymentsApi.PrivateApiKey = Environment.GetEnvironmentVariable("SimplifyPrivate");
@@ -42,7 +42,7 @@ namespace Locality.Domain.Payments
                 if (payment.Authorization.Id != null)
                 {
                     userBuying.CustomerId = customer.Id;
-                    return Task.FromResult(new Tickets
+                    return Task.FromResult(new Localisty.Data.Entities.Tickets.Tickets
                     {
                         Barcode = payment.Reference,
                         Event = buyEvent,
@@ -60,7 +60,7 @@ namespace Locality.Domain.Payments
             }
         }
 
-        public Task<Tickets> BuyTicketWithCustomer(string customerId, Events buyEvent, User userBuying)
+        public Task<Localisty.Data.Entities.Tickets.Tickets> BuyTicketWithCustomer(string customerId, Data.Entities.Events.Events buyEvent, User userBuying)
         {
             PaymentsApi.PublicApiKey = "sbpb_MzlkM2M1MjItZDkwZi00NTY5LWI1YzAtOGFiM2Y5YWJlMzQx";
             PaymentsApi.PrivateApiKey = Environment.GetEnvironmentVariable("SimplifyPrivate");
@@ -87,7 +87,7 @@ namespace Locality.Domain.Payments
 
                 if (payment.Authorization.Id != null)
                 {
-                    return Task.FromResult(new Tickets
+                    return Task.FromResult(new Localisty.Data.Entities.Tickets.Tickets
                     {
                         Barcode = payment.Reference,
                         Event = buyEvent,

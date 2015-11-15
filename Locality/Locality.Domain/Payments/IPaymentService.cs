@@ -7,8 +7,8 @@ namespace Locality.Domain.Payments
 {
     public interface IPaymentService
     {
-        Task<Tickets> BuyTicketWithToken(string token, Events buyEvent, User userBuying);
+        Task<Localisty.Data.Entities.Tickets.Tickets> BuyTicketWithToken(string token, Data.Entities.Events.Events buyEvent, User userBuying);
 
-        Task<Tickets> BuyTicketWithCustomer(string custoerId, Events buyEvent, User userBuying);
+        Task<Localisty.Data.Entities.Tickets.Tickets> BuyTicketWithCustomer(string custoerId, Data.Entities.Events.Events buyEvent, User userBuying);
     }
 }
