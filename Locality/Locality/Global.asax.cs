@@ -12,6 +12,7 @@ using Locality.Domain.Users;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using SimpleInjector.Integration.WebApi;
+using Microsoft.AspNet.Identity;
 
 namespace Locality
 {

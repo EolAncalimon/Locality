@@ -10,6 +10,7 @@ namespace Locality.Domain.Users
     public interface IUserService
     {
         Task<User> GetUser(string facebookId);
+        Task<User> GetUserWithToken(string facebookToken);
         Task<User> CreateUser(User entity);
 
         Task<User> UpdateUser(User entity);

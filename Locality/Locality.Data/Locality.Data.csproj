@@ -89,6 +89,14 @@
     <Compile Include="Migrations\201511141938107_AddedRestOfTheEntities.Designer.cs">
       <DependentUpon>201511141938107_AddedRestOfTheEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511142334598_FacebookApiChanges.cs" />
+    <Compile Include="Migrations\201511142334598_FacebookApiChanges.Designer.cs">
+      <DependentUpon>201511142334598_FacebookApiChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511150002348_FixUserForFacebookLimitedAccess.cs" />
+    <Compile Include="Migrations\201511150002348_FixUserForFacebookLimitedAccess.Designer.cs">
+      <DependentUpon>201511150002348_FixUserForFacebookLimitedAccess.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -104,6 +112,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511141938107_AddedRestOfTheEntities.resx">
       <DependentUpon>201511141938107_AddedRestOfTheEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511142334598_FacebookApiChanges.resx">
+      <DependentUpon>201511142334598_FacebookApiChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511150002348_FixUserForFacebookLimitedAccess.resx">
+      <DependentUpon>201511150002348_FixUserForFacebookLimitedAccess.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Facebook;
 using Locality.Data.Entities.Users;
 using Locality.Domain.Users;
 
@@ -18,6 +19,35 @@ namespace Locality.Controllers
             _userService = userService;
         }
 
+        public async Task<HttpResponseMessage> Login(string authToken)
+        {
+            var fb = new FacebookClient(authToken);
+            fb.AppSecret = Environment.GetEnvironmentVariable("FacebookSecret");
+            dynamic result = await fb.GetTaskAsync("me");
+            var existingUser = (User)await _userService.GetUser(result.Id);
+            if (existingUser == null)
+            {
+                var newUser = await _userService.CreateUser(new User
+                {
+                    Id = Guid.NewGuid(),
+                    FacebookId = result.id.ToString(),
+                    FacebookToken = authToken,
+                    Name = result.name.ToString(),
+                    UpdatedAt = DateTime.Now
+                });
+                
+                return Request.CreateResponse(HttpStatusCode.OK, newUser);
+            }
+
+            existingUser.Name = result.name.ToString();
+            existingUser.FacebookToken = authToken;
+            existingUser.UpdatedAt = DateTime.Now;
+
+            var updatedUser = await _userService.UpdateUser(existingUser);
+
+            return Request.CreateResponse(HttpStatusCode.OK, updatedUser);
+        }
+
         public async Task<HttpResponseMessage> GetUser(string facebookId)
         {
             var user = await _userService.GetUser(facebookId);
@@ -25,19 +55,11 @@ namespace Locality.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
-        public async Task<HttpResponseMessage> CreateUser(string facebookId, string firstName, string lastName)
+        public async Task<HttpResponseMessage> GetUserWithToken(string facebookToken)
         {
-            var newUser = new User
-            {
-                Id = Guid.NewGuid(),
-                FacebookId = facebookId,
-                FirstName = firstName,
-                LastName = lastName
-            };
+            var user = await _userService.GetUser(facebookToken);
 
-            var createdUser = await _userService.CreateUser(newUser);
-
-            return Request.CreateResponse(HttpStatusCode.OK, createdUser);
+            return Request.CreateResponse(HttpStatusCode.OK, user);
         }
     }
 }

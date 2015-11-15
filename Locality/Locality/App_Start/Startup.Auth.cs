@@ -55,9 +55,9 @@ namespace Locality
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+                appId: "1678796092338748",
+                appSecret: Environment.GetEnvironmentVariable("FacebookSecret"));
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

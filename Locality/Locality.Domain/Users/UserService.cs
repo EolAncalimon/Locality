@@ -22,6 +22,11 @@ namespace Locality.Domain.Users
             return await _repository.Get(u => u.FacebookId == facebookId);
         }
 
+        public async Task<User> GetUserWithToken(string facebookToken)
+        {
+            return await _repository.Get(u => u.FacebookToken == facebookToken);
+        }
+
         public async Task<User> CreateUser(User entity)
         {
             _repository.Add(entity);

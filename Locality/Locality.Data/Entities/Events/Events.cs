@@ -16,6 +16,8 @@ namespace Locality.Data.Entities.Events
         public float Longitude { get; set; }
         public float Latitude { get; set; }
         public int TicketsRemaining { get; set; }
+
+        public string EventImageUrl { get; set; }
         public virtual ICollection<EventPrefences> Prefences { get; set; } 
 
         public virtual ICollection<Tickets> Tickets { get; set; } 
